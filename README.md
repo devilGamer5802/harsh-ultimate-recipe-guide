@@ -1,206 +1,145 @@
-# Interactive Recipe Card with Animations
+# 🍰 Harsh's Ultimate Recipe Guide
 
-A sophisticated, interactive recipe card that combines elegant design with modern web technologies to create an engaging cooking experience. This project demonstrates advanced CSS animations, JavaScript interactivity, and responsive design principles.
+> **Live Demo**: [https://devilgamer5802.github.io/harsh-ultimate-recipe-guide](https://devilgamer5802.github.io/harsh-ultimate-recipe-guide)
 
-## 🎨 Design Inspiration
-
-- **Tried & True Recipe**: Clean typography, elegant spacing, warm color palette
-- **CHRLS Design**: Sophisticated animations, modern interactions, creative layouts
+A sophisticated, interactive recipe website that combines elegant design with modern web technologies to create an engaging cooking experience. Built with vanilla HTML, CSS, and JavaScript - no frameworks needed!
 
 ## ✨ Features
 
-### Core Functionality
-- **Recipe Display**: Beautiful presentation of ingredients, instructions, and cooking notes
-- **Interactive Navigation**: Smooth tab switching between different recipe sections
-- **Responsive Design**: Optimized for mobile, tablet, and desktop devices
-- **Print-Friendly**: Dedicated print stylesheet for easy recipe printing
+### 🎯 Core Functionality
+- **Interactive Recipe Cards**: Beautiful presentation with ingredient checklists
+- **Cooking Mode**: Step-by-step guidance with automatic timers
+- **Recipe Scaling**: Adjust ingredients for different serving sizes
+- **Print Recipes**: Clean, optimized PDF output
+- **Share Recipes**: Web Share API with clipboard fallback
+- **4 Delivery App Integration**: Direct links to Blinkit, Zepto, Instamart, BigBasket
 
-### Advanced Interactions
-- **Start Cooking Mode**: Step-by-step cooking guidance with progress tracking
-- **Interactive Timers**: Automatic timers for each cooking step
-- **Progress Bar**: Visual representation of cooking progress
-- **Ingredient Checklist**: Check off ingredients as you gather them
-- **Recipe Scaling**: Automatically adjust ingredients for different serving sizes
+### 🎨 Design & UX
+- **Responsive Design**: Perfect on mobile, tablet, and desktop
+- **Beautiful Animations**: Smooth transitions and micro-interactions
+- **Elegant Typography**: Playfair Display + Inter font combination
+- **Warm Color Palette**: Cooking-inspired amber and brown tones
+- **Custom Scrollbars**: Branded scrolling experience
 
-### CSS Animations & Effects
-- **Smooth Transitions**: All interactions feature smooth, polished animations
-- **Hover Effects**: Engaging micro-interactions on all interactive elements
-- **Progressive Reveals**: Content animations triggered by scroll and interaction
-- **Visual Feedback**: Clear visual states for all user actions
+### 🔧 Technical Features
+- **14 Recipes**: Diverse collection from desserts to main courses
+- **Dietary Filters**: Vegan, vegetarian, gluten-free, pescatarian
+- **Accessibility**: WCAG compliant with keyboard navigation
+- **Performance**: 95+ Lighthouse score, fast loading
+- **Print Optimization**: Compact, ink-friendly layouts
 
-### Accessibility Features
-- **Keyboard Navigation**: Full keyboard support for all interactions
-- **Screen Reader Support**: Proper ARIA labels and semantic markup
-- **High Contrast Support**: Optimized for high contrast mode
-- **Reduced Motion**: Respects user's motion preferences
+## 🚀 Quick Start
 
-## 🛠 Technologies Used
+### Option 1: Visit Live Site
+Just go to [https://devilgamer5802.github.io/harsh-ultimate-recipe-guide](https://devilgamer5802.github.io/harsh-ultimate-recipe-guide)
 
-- **HTML5**: Semantic markup with accessibility in mind
-- **CSS3**: Modern styling with custom properties, Grid, Flexbox, and animations
-- **Vanilla JavaScript**: No frameworks - pure JavaScript for maximum performance
-- **Web APIs**: Intersection Observer, Local Storage, Share API
+### Option 2: Run Locally
+```bash
+# Clone the repository
+git clone https://github.com/devilgamer5802/harsh-ultimate-recipe-guide.git
+cd harsh-ultimate-recipe-guide
+
+# Serve locally (choose one)
+python3 -m http.server 8000
+# OR
+python -m http.server 8000
+# OR
+npx serve .
+
+# Open http://localhost:8000
+```
 
 ## 📁 Project Structure
 
 ```
-interactive-recipe-card/
+harsh-ultimate-recipe-guide/
 ├── index.html              # Main HTML structure
-├── styles.css              # Complete CSS with animations and responsive design
-├── script.js               # JavaScript functionality and interactions
-└── README.md               # Project documentation
+├── styles.css              # Complete CSS with animations
+├── script.js               # JavaScript functionality
+├── README.md               # Project documentation
+├── package.json            # Project configuration
+└── .github/
+    └── workflows/
+        └── deploy.yml      # GitHub Pages deployment
 ```
-
-## 🎯 Assignment Requirements Fulfilled
-
-### 1. Recipe Card Layout (HTML + CSS) ✅
-- [x] Recipe title ("Decadent Chocolate Cake")
-- [x] High-quality food photography
-- [x] Comprehensive ingredients list with categories
-- [x] Detailed step-by-step instructions
-- [x] Preparation time and serving size information
-- [x] Structured layout using CSS Box Model
-- [x] Consistent fonts, spacing, and color scheme
-
-### 2. CSS Animations and Transitions ✅
-- [x] Hover effects on ingredients (color changes, transforms)
-- [x] Hover effects on cooking steps
-- [x] Smooth transitions for content visibility
-- [x] Animated progress bar for cooking steps
-- [x] Additional micro-animations for enhanced UX
-
-### 3. Basic JavaScript Interactivity ✅
-- [x] Toggle visibility of ingredients and instructions sections
-- [x] "Start Cooking" button functionality
-- [x] Sequential step highlighting in cooking mode
-- [x] "Next" button functionality for step progression
-
-### 4. Responsive Design (Media Queries) ✅
-- [x] Mobile-first responsive design
-- [x] Tablet and desktop optimizations
-- [x] Vertical stacking on mobile devices
-- [x] Readable text and images across all devices
-
-### 5. Visual Engagement ✅
-- [x] Appealing background colors and gradients
-- [x] Professional typography hierarchy
-- [x] Engaging button designs and interactions
-- [x] Thoughtful animation timing and easing
-
-### Bonus Features Implemented ✅
-- [x] **Automatic Timer**: Timer that starts when "Start Cooking" is clicked
-- [x] **Print-Friendly Layout**: Dedicated CSS for printing
-- [x] **Recipe Scaling**: Adjust ingredients for different serving sizes
-- [x] **Ingredient Checklist**: Mark ingredients as gathered
-- [x] **Progress Tracking**: Visual progress through cooking steps
-- [x] **Keyboard Navigation**: Full keyboard support
-- [x] **Audio/Visual Notifications**: Step completion alerts
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Modern web browser (Chrome, Firefox, Safari, Edge)
-- No additional dependencies required
-
-### Installation
-1. Clone or download the project files
-2. Open `index.html` in your web browser
-3. Start exploring the interactive recipe card!
-
-### Local Development
-For development, you can use any local server. Here are a few options:
-
-```bash
-# Using Python (if installed)
-python -m http.server 8000
-
-# Using Node.js (if installed)
-npx serve .
-
-# Using PHP (if installed)
-php -S localhost:8000
-```
-
-Then open `http://localhost:8000` in your browser.
 
 ## 🎮 How to Use
 
 ### Basic Navigation
-1. **Switch Sections**: Click on the navigation tabs (Ingredients, Instructions, Notes)
-2. **Toggle Sections**: Use the toggle buttons to collapse/expand sections
-3. **Check Ingredients**: Mark ingredients as gathered using the checkboxes
+1. **Browse Recipes**: Use filter buttons to find recipes by category or diet
+2. **View Recipe**: Click any recipe card to open detailed modal
+3. **Scale Recipe**: Adjust serving sizes (½x, 1x, 1.5x, 2x)
+4. **Print Recipe**: Get clean, optimized PDF for offline use
 
 ### Cooking Mode
-1. Click "Start Cooking" to enter guided cooking mode
-2. Follow the highlighted steps in sequence
-3. Use arrow keys or click on steps to navigate
-4. Automatic timers will track cooking progress
-5. Visual and audio notifications indicate step completion
+1. Click "Start Cooking" to begin guided cooking
+2. Follow highlighted steps with automatic timers
+3. Use arrow keys or click to navigate steps
+4. Get notifications when steps complete
 
-### Recipe Scaling
-1. Click "Scale Recipe" button
-2. Choose desired serving size (½x, 1x, 1.5x, 2x)
-3. All ingredient amounts automatically adjust
+### Shopping Integration
+1. Click delivery app icons next to ingredients
+2. Search opens automatically in new tab
+3. Choose from 4 major Indian delivery services
 
-### Printing
-1. Click "Print Recipe" for a clean, printer-friendly version
-2. Unnecessary elements are hidden in print view
+## 🛠 Deployment to GitHub Pages
 
-## 🎨 Design System
+### Automatic Deployment (Recommended)
+1. **Fork this repository** to your GitHub account
+2. **Enable GitHub Pages** in repository Settings → Pages → Source: GitHub Actions
+3. **Push to main branch** - deployment happens automatically via GitHub Actions
+4. **Visit your site** at `https://yourusername.github.io/harsh-ultimate-recipe-guide`
 
-### Color Palette
-- **Primary**: `#3a3939` (Dark charcoal)
-- **Secondary**: `#9e5424` (Warm brown)
-- **Accent**: `#b4974f` (Gold)
-- **Success**: `#71a63c` (Green)
-- **Background**: `#f7f6f9` (Light cream)
+### Manual Deployment
+```bash
+# Install gh-pages
+npm install -g gh-pages
 
-### Typography
-- **Primary Font**: Inter (modern, readable sans-serif)
-- **Display Font**: Playfair Display (elegant serif for headings)
+# Deploy to GitHub Pages
+npm run deploy
+```
 
-### Spacing System
-- Uses consistent spacing scale (0.5rem to 4rem)
-- Based on 8px grid system for perfect alignment
+### Custom Domain (Optional)
+1. Add a `CNAME` file with your domain name
+2. Configure DNS to point to GitHub Pages
+3. Enable custom domain in repository settings
 
-## 📱 Browser Compatibility
-
-- **Chrome**: 80+ ✅
-- **Firefox**: 75+ ✅
-- **Safari**: 13+ ✅
-- **Edge**: 80+ ✅
-
-### Progressive Enhancement
-- Core functionality works in all modern browsers
-- Advanced features (like Web Share API) degrade gracefully
-- CSS animations respect user's motion preferences
-
-## ♿ Accessibility
-
-- **WCAG 2.1 AA Compliant**
-- Screen reader optimized
-- Keyboard navigation support
-- High contrast mode support
-- Focus management
-- Semantic HTML structure
-
-## 🔧 Customization
+## 🎨 Customization
 
 ### Adding New Recipes
-1. Update the content in `index.html`
-2. Replace the recipe image URL
-3. Modify ingredients and instructions
-4. Adjust the total steps count in JavaScript
+Edit `script.js` and add to the `recipes` object:
+```javascript
+'your-recipe-id': {
+    title: 'Your Recipe Name',
+    image: 'https://your-image-url.jpg',
+    category: 'main', // main, dessert, appetizer, breakfast, salad
+    dietary: ['vegetarian'], // vegan, vegetarian, gluten-free, pescatarian
+    prepTime: 15,
+    cookTime: 30,
+    servings: '4',
+    ingredients: {
+        'Category Name': [
+            { amount: '1 cup', name: 'ingredient name' }
+        ]
+    },
+    instructions: [
+        { title: 'Step Title', description: 'Step description', time: 5 }
+    ],
+    notes: [
+        { title: 'Tip Title', content: 'Helpful tip content' }
+    ]
+}
+```
 
 ### Styling Changes
-1. Update CSS custom properties in `:root`
-2. Modify color scheme, typography, or spacing
-3. Add new animations or transitions
-
-### Additional Features
-1. Extend the JavaScript class with new methods
-2. Add new interactive elements
-3. Integrate with external APIs or services
+Update CSS custom properties in `:root`:
+```css
+:root {
+    --amber-500: #f59e0b;     /* Primary color */
+    --neutral-800: #292524;    /* Text color */
+    --font-serif: 'Playfair Display'; /* Heading font */
+}
+```
 
 ## 📊 Performance
 
@@ -208,35 +147,31 @@ Then open `http://localhost:8000` in your browser.
 - **First Contentful Paint**: < 1.5s
 - **Time to Interactive**: < 2.5s
 - **No external dependencies** for fast loading
-- **Optimized images** and efficient CSS
+- **Optimized images** from Unsplash CDN
 
 ## 🤝 Contributing
 
-Feel free to contribute improvements:
-
 1. Fork the repository
-2. Create a feature branch
+2. Create a feature branch: `git checkout -b feature-name`
 3. Make your changes
-4. Submit a pull request
+4. Commit: `git commit -m 'Add feature'`
+5. Push: `git push origin feature-name`
+6. Submit a pull request
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+MIT License - feel free to use this project for your own recipe website!
 
-## 🙏 Acknowledgments
+## 🙏 Credits
 
-- **Design Inspiration**: Tried & True Recipe and CHRLS Design
-- **Photography**: Epicurious and professional food photographers
-- **Typography**: Google Fonts (Inter and Playfair Display)
-- **Icons**: Unicode emoji for cross-platform compatibility
-
-## 📞 Support
-
-If you encounter any issues or have questions:
-1. Check the browser console for error messages
-2. Ensure you're using a modern browser
-3. Try refreshing the page or clearing cache
+- **Developer**: [devilGamer5802](https://github.com/devilgamer5802)
+- **Design Inspiration**: Tried & True Recipe, CHRLS Design
+- **Images**: Unsplash photographers
+- **Fonts**: Google Fonts (Inter, Playfair Display)
+- **Icons**: Font Awesome
 
 ---
 
-**Built with ❤️ for the Interactive Recipe Card Assignment**
+**Built with ❤️ for food lovers everywhere** 🍰✨
+
+> Star this repository if you found it helpful!
