@@ -1,0 +1,35 @@
+{
+  "name": "harsh-ultimate-recipe-guide",
+  "version": "2.0.0",
+  "description": "Harsh's Ultimate Recipe Guide - Interactive recipe website with animations and cooking mode",
+  "main": "index.html",
+  "homepage": "https://devilgamer5802.github.io/harsh-ultimate-recipe-guide",
+  "scripts": {
+    "dev": "python3 -m http.server 8000 || python -m http.server 8000",
+    "start": "python3 -m http.server 8000 || python -m http.server 8000",
+    "build": "echo 'Static site - no build needed'",
+    "deploy": "gh-pages -d ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devilgamer5802/harsh-ultimate-recipe-guide.git"
+  },
+  "keywords": [
+    "recipe",
+    "interactive",
+    "animations",
+    "css",
+    "javascript",
+    "responsive",
+    "cooking",
+    "github-pages"
+  ],
+  "author": "devilGamer5802",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devilgamer5802/harsh-ultimate-recipe-guide/issues"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.0"
+  }
+}

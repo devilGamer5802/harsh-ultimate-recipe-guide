@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh's Ultimate Recipe Guide - Delicious Recipes for Every Occasion</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <h1><span id="greeting"></span> Harsh's Ultimate Recipe Guide</h1>
+                <p>Delicious recipes for every occasion</p>
+            </div>
+
+            <nav class="main-nav">
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#recipes" class="nav-link" data-page="recipes">Recipes</a></li>
+                    <li><a href="#about" class="nav-link" data-page="about">About</a></li>
+                    <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <section id="home-page" class="page active">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <span class="hero-badge">Featured Recipe</span>
+                        <h1 class="hero-title">Decadent Chocolate Cake</h1>
+                        <p class="hero-description">Rich, moist, and irresistibly chocolatey - this cake is the ultimate indulgence for any chocolate lover. Perfect for special occasions or when you simply want to treat yourself.</p>
+
+                        <div class="hero-stats" id="heroStats">
+                            <div class="stat">
+                                <i class="far fa-clock"></i>
+                                <div>
+                                    <span class="stat-label">Prep Time</span>
+                                    <span class="stat-value" id="prepTime">30 mins</span>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-fire"></i>
+                                <div>
+                                    <span class="stat-label">Cook Time</span>
+                                    <span class="stat-value" id="cookTime">45 mins</span>
+                                </div>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-users"></i>
+                                <div>
+                                    <span class="stat-label">Serves</span>
+                                    <span class="stat-value" id="servings">8-10</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hero-actions">
+                            <button class="btn-primary" onclick="showRecipe('chocolate-cake')">View Recipe</button>
+                            <button class="btn-secondary" id="scaleRecipeBtn">Scale Recipe</button>
+                        </div>
+                    </div>
+
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Decadent Chocolate Cake">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Recipes -->
+            <section class="featured-recipes">
+                <div class="container">
+                    <h2 class="section-title">Featured Recipes</h2>
+                    <div class="recipes-grid">
+                        <div class="recipe-card" onclick="showRecipe('chocolate-cake')">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chocolate Cake">
+                            <div class="recipe-info">
+                                <h3>Decadent Chocolate Cake</h3>
+                                <p>Rich and moist chocolate cake</p>
+                                <div class="recipe-meta">
+                                    <span><i class="far fa-clock"></i> 75 mins</span>
+                                    <span><i class="fas fa-users"></i> 8-10</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recipe-card" onclick="showRecipe('pasta-carbonara')">
+                            <img src="https://images.unsplash.com/photo-1551892374-ecf8fdf91e6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Pasta Carbonara">
+                            <div class="recipe-info">
+                                <h3>Classic Pasta Carbonara</h3>
+                                <p>Creamy Italian pasta perfection</p>
+                                <div class="recipe-meta">
+                                    <span><i class="far fa-clock"></i> 25 mins</span>
+                                    <span><i class="fas fa-users"></i> 4</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recipe-card" onclick="showRecipe('chicken-tikka')">
+                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chicken Tikka">
+                            <div class="recipe-info">
+                                <h3>Chicken Tikka Masala</h3>
+                                <p>Aromatic Indian curry</p>
+                                <div class="recipe-meta">
+                                    <span><i class="far fa-clock"></i> 45 mins</span>
+                                    <span><i class="fas fa-users"></i> 6</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recipe-card" onclick="showRecipe('margherita-pizza')">
+                            <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Margherita Pizza">
+                            <div class="recipe-info">
+                                <h3>Margherita Pizza</h3>
+                                <p>Classic Italian pizza</p>
+                                <div class="recipe-meta">
+                                    <span><i class="far fa-clock"></i> 90 mins</span>
+                                    <span><i class="fas fa-users"></i> 4</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Recipes Page -->
+        <section id="recipes-page" class="page">
+            <div class="container">
+                <h1 class="page-title">All Recipes</h1>
+                <div class="recipes-filter">
+                    <button class="filter-btn active" data-filter="all">All Recipes</button>
+                    <button class="filter-btn" data-filter="main">Main Course</button>
+                    <button class="filter-btn" data-filter="dessert">Desserts</button>
+                    <button class="filter-btn" data-filter="appetizer">Appetizers</button>
+                    <button class="filter-btn" data-filter="breakfast">Breakfast</button>
+                    <button class="filter-btn" data-filter="salad">Salads</button>
+                    <button class="filter-btn" data-filter="vegan">🌱 Vegan</button>
+                    <button class="filter-btn" data-filter="vegetarian">🥕 Vegetarian</button>
+                    <button class="filter-btn" data-filter="gluten-free">🌾 Gluten-Free</button>
+                    <button class="filter-btn" data-filter="pescatarian">🐟 Pescatarian</button>
+                </div>
+                <div class="recipes-grid" id="allRecipesGrid">
+                    <!-- Recipes will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section id="about-page" class="page">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h1 class="page-title">About Harsh</h1>
+                        <p class="lead">Welcome to my culinary world! I'm Harsh, a passionate home cook and food enthusiast.</p>
+
+                        <p>My journey with cooking started in my grandmother's kitchen, where I learned that food is not just about nourishment – it's about bringing people together, creating memories, and expressing love through every dish.</p>
+
+                        <p>On this blog, you'll find a collection of my favorite recipes that I've perfected over the years. From comforting classics to innovative creations, each recipe comes with detailed instructions, helpful tips, and beautiful photography to guide you on your own culinary adventures.</p>
+
+                        <p>I believe that great cooking doesn't require expensive ingredients or complicated techniques – it just needs passion, patience, and a willingness to experiment.</p>
+
+                        <div class="social-links">
+                            <h3>Connect with me</h3>
+                            <div class="social-buttons">
+                                <a href="#" class="social-btn instagram">
+                                    <i class="fab fa-instagram"></i>
+                                    <span>Instagram</span>
+                                </a>
+                                <a href="#" class="social-btn youtube">
+                                    <i class="fab fa-youtube"></i>
+                                    <span>YouTube</span>
+                                </a>
+                                <a href="#" class="social-btn facebook">
+                                    <i class="fab fa-facebook"></i>
+                                    <span>Facebook</span>
+                                </a>
+                                <a href="#" class="social-btn twitter">
+                                    <i class="fab fa-twitter"></i>
+                                    <span>Twitter</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Harsh cooking">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact-page" class="page">
+            <div class="container">
+                <h1 class="page-title">Get In Touch</h1>
+                <div class="contact-content">
+                    <div class="contact-form">
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary">Send Message</button>
+                        </form>
+                    </div>
+
+                    <div class="contact-info">
+                        <h3>Let's collaborate!</h3>
+                        <p>Have a recipe request? Want to collaborate? Or just want to say hello? I'd love to hear from you!</p>
+
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>harsh@recipeultimate.com</span>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recipe Detail Modal -->
+        <div class="recipe-modal" id="recipeModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalRecipeTitle">Recipe Title</h2>
+                    <button class="modal-close" id="closeModal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <!-- Recipe Navigation -->
+                    <div class="recipe-nav">
+                        <button class="recipe-nav-btn active" data-section="ingredients">Ingredients</button>
+                        <button class="recipe-nav-btn" data-section="instructions">Instructions</button>
+                        <button class="recipe-nav-btn" data-section="notes">Notes</button>
+                        <button class="start-cooking-btn" id="startCookingBtn">Start Cooking</button>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="progress-container hidden" id="progressContainer">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <span class="progress-text" id="progressText">Step 1 of 8</span>
+                        <div class="cooking-timer hidden" id="cookingTimer">
+                            <i class="far fa-clock"></i>
+                            <span id="timerText">00:00</span>
+                        </div>
+                    </div>
+
+                    <!-- Recipe Content -->
+                    <div class="recipe-sections">
+                        <!-- Ingredients Section -->
+                        <div class="recipe-section active" id="ingredients-section">
+                            <div class="section-header">
+                                <h3>Ingredients</h3>
+                                <button class="collapse-btn" data-target="ingredients-content">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                            <div class="section-content" id="ingredients-content">
+                                <div id="ingredientsList">
+                                    <!-- Will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Instructions Section -->
+                        <div class="recipe-section" id="instructions-section">
+                            <div class="section-header">
+                                <h3>Instructions</h3>
+                                <button class="collapse-btn" data-target="instructions-content">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                            <div class="section-content" id="instructions-content">
+                                <div id="instructionsList">
+                                    <!-- Will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notes Section -->
+                        <div class="recipe-section" id="notes-section">
+                            <div class="section-header">
+                                <h3>Chef's Notes</h3>
+                                <button class="collapse-btn" data-target="notes-content">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                            <div class="section-content" id="notes-content">
+                                <div id="notesList">
+                                    <!-- Will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recipe Actions -->
+                    <div class="recipe-actions">
+                        <button class="btn-secondary" id="printRecipeBtn">
+                            <i class="fas fa-print"></i> Print Recipe
+                        </button>
+                        <button class="btn-secondary" id="shareRecipeBtn">
+                            <i class="fas fa-share"></i> Share Recipe
+                        </button>
+                    </div>
+
+                    <!-- Preparation Photos -->
+                    <div class="preparation-photos" id="preparationPhotos">
+                        <h3>Preparation Steps</h3>
+                        <div class="photos-grid">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scale Recipe Modal -->
+        <div class="scale-modal" id="scaleModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Scale Recipe</h3>
+                    <button class="modal-close" id="closeScaleModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Choose your desired serving size:</p>
+                    <div class="scale-options">
+                        <button class="scale-option" data-scale="0.5">Half Recipe<br><small>4-5 servings</small></button>
+                        <button class="scale-option active" data-scale="1">Original<br><small>8-10 servings</small></button>
+                        <button class="scale-option" data-scale="1.5">1.5x Recipe<br><small>12-15 servings</small></button>
+                        <button class="scale-option" data-scale="2">Double Recipe<br><small>16-20 servings</small></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Harsh's Ultimate Recipe Guide</h3>
+                <p>Bringing delicious recipes to your kitchen, one dish at a time.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home" class="nav-link" data-page="home">Home</a></li>
+                    <li><a href="#recipes" class="nav-link" data-page="recipes">Recipes</a></li>
+                    <li><a href="#about" class="nav-link" data-page="about">About</a></li>
+                    <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Buy Ingredients</h4>
+                <div class="grocery-links">
+                    <a href="https://blinkit.com" target="_blank" class="grocery-link">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVqHfkvnG7fVMhqr3TJXyeSjC-FuRvzbmUcw&s" alt="Blinkit">
+                        <span>Blinkit</span>
+                    </a>
+                    <a href="https://www.zeptonow.com" target="_blank" class="grocery-link">
+                        <img src="https://play-lh.googleusercontent.com/qS2_N5dD4lJOdKi6kYkp8_3hFqZ3sQ7gEBzXPrQ7qHGh4uJcSYfL-4-x2jdkr9FpkAE=w240-h480-rw" alt="Zepto">
+                        <span>Zepto</span>
+                    </a>
+                    <a href="https://www.swiggy.com/instamart" target="_blank" class="grocery-link">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6WuOj7R9xqQmhyGaLILr5Y3Aj-mAcZf_2WA&s" alt="Swiggy Instamart">
+                        <span>Instamart</span>
+                    </a>
+                    <a href="https://www.bigbasket.com" target="_blank" class="grocery-link">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyOdJHRTe_uGKB48gYkM0HKBfKV-mAcZf_2WA&s" alt="BigBasket">
+                        <span>BigBasket</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Developer</h4>
+                <p>Crafted with ❤️ by <strong>devilGamer5802</strong></p>
+                <a href="https://github.com/devilGamer5802" target="_blank" class="github-link">
+                    <i class="fab fa-github"></i>
+                    <span>View on GitHub</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Harsh's Ultimate Recipe Guide. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
