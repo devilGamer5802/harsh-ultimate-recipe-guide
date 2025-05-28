@@ -60,15 +60,15 @@ class RecipeWebsite {
                     { title: '🎨 Variations', content: 'Add espresso powder or chocolate chips for extra flavor.' }
                 ],
                 photos: [
-                    { url: 'https://images.unsplash.com/photo-1571115764595-644a1f56a55c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80', caption: 'Mixing dry ingredients' },
-                    { url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80', caption: 'Combining wet ingredients' },
-                    { url: 'https://images.unsplash.com/photo-1607478900766-efe13248b125?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80', caption: 'Baking in the oven' },
+                    { url: 'https://images.unsplash.com/photo-1660232780192-9a22f5ace5bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=8', caption: 'Mixing dry ingredients' },
+                    { url: 'https://plus.unsplash.com/premium_photo-1695042865403-41231d43b67b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80', caption: 'Combining wet ingredients' },
+                    { url: 'https://plus.unsplash.com/premium_photo-1663924748608-6b6005543d15?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80', caption: 'Baking in the oven' },
                     { url: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80', caption: 'Final decorated cake' }
                 ]
             },
             'pasta-carbonara': {
                 title: 'Classic Pasta Carbonara',
-                image: 'https://images.unsplash.com/photo-1551892374-ecf8fdf91e6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                image: 'https://unsplash.com/photos/pasta-on-white-ceramic-plate-dvgjof0_TP8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
                 category: 'main',
                 dietary: [],
                 prepTime: 10,
@@ -364,7 +364,7 @@ class RecipeWebsite {
             },
             'beef-tacos': {
                 title: 'Spicy Beef Tacos',
-                image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                image: 'https://images.unsplash.com/photo-1633243279656-0157b0b3cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
                 category: 'main',
                 dietary: ['gluten-free'],
                 prepTime: 15,
@@ -819,16 +819,16 @@ class RecipeWebsite {
                     </label>
                     <div class="buy-links">
                         <a href="https://blinkit.com/search?q=${encodeURIComponent(ingredient.name)}" target="_blank" class="buy-link blinkit" title="Buy on Blinkit">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVqHfkvnG7fVMhqr3TJXyeSjC-FuRvzbmUcw&s" alt="Blinkit">
+                            <img src="https://play-lh.googleusercontent.com/kXJYGrvy4pvHwzw6tMgf-KPthnPDg4RvvoOTgffwSuHCUL63WVxaj3ojX3ADBS0UiD0=w480-h960-rw" alt="Blinkit">
                         </a>
                         <a href="https://www.zeptonow.com/search?q=${encodeURIComponent(ingredient.name)}" target="_blank" class="buy-link zepto" title="Buy on Zepto">
-                            <img src="https://play-lh.googleusercontent.com/qS2_N5dD4lJOdKi6kYkp8_3hFqZ3sQ7gEBzXPrQ7qHGh4uJcSYfL-4-x2jdkr9FpkAE=w240-h480-rw" alt="Zepto">
+                            <img src="https://play-lh.googleusercontent.com/NYVFtcwG7Z4jhL09qXTX8-rVl5UL7FvmwKBruhHT0zDhvicJ5zrsnD_v8T5h_rUQoXI=s96-rw" alt="Zepto">
                         </a>
                         <a href="https://www.swiggy.com/instamart/search?query=${encodeURIComponent(ingredient.name)}" target="_blank" class="buy-link instamart" title="Buy on Instamart">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6WuOj7R9xqQmhyGaLILr5Y3Aj-mAcZf_2WA&s" alt="Instamart">
+                            <img src="https://play-lh.googleusercontent.com/gS8vyX1kwPBjo15FvdQwK_U6NpATu0N5GpWJfXGxhhQKPiUCMtutCNn1hUGQvJAzIBQ=s96-rw" alt="Instamart">
                         </a>
                         <a href="https://www.bigbasket.com/ps/?q=${encodeURIComponent(ingredient.name)}" target="_blank" class="buy-link bigbasket" title="Buy on BigBasket">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyOdJHRTe_uGKB48gYkM0HKBfKV-mAcZf_2WA&s" alt="BigBasket">
+                            <img src="https://play-lh.googleusercontent.com/EuiZnkT8aEKjXDLX74DTp1VRIwWaeRa8Dvo-LOGAxy1FPQ8GzABTIRenksiM-A7Oz48g=w480-h960-rw" alt="BigBasket">
                         </a>
                     </div>
                 `;
