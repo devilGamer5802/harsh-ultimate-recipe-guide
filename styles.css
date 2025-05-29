@@ -66,12 +66,22 @@
 
 body {
     font-family: var(--font-sans);
-    background: linear-gradient(135deg, #faf9f7 0%, #f5f3f0 25%, #f0ede8 50%, #ebe7e0 75%, #e6e1d8 100%);
+    background: linear-gradient(135deg,
+        #fafaf9 0%,
+        #f7f6f4 15%,
+        #f5f4f1 30%,
+        #f2f1ed 45%,
+        #efede8 60%,
+        #eceae4 75%,
+        #e9e6df 90%,
+        #e6e3db 100%
+    );
     background-attachment: fixed;
     color: var(--neutral-800);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     position: relative;
+    min-height: 100vh;
 }
 
 body::before {
@@ -82,9 +92,25 @@ body::before {
     right: 0;
     bottom: 0;
     background-image:
-        radial-gradient(circle at 20% 50%, rgba(251, 191, 36, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(159, 84, 36, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(180, 151, 79, 0.03) 0%, transparent 50%);
+        radial-gradient(circle at 25% 25%, rgba(251, 191, 36, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(159, 84, 36, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(180, 151, 79, 0.01) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(255, 255, 255, 0.02) 100%
+    );
     pointer-events: none;
     z-index: -1;
 }
@@ -94,17 +120,73 @@ body::before {
    ================================ */
 
 .main-header {
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     box-shadow: var(--shadow-sm);
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 1px solid rgba(231, 229, 228, 0.3);
+}
+
+.main-header.collapsed {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow);
+    padding: var(--space-3) 0;
+}
+
+.main-header.collapsed .logo {
+    display: none;
+}
+
+.main-header.collapsed .nav-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: var(--space-6);
+}
+
+.main-header.collapsed .nav-link {
+    font-size: 0.9rem;
+    padding: var(--space-2) var(--space-4);
+    background: rgba(245, 158, 11, 0.1);
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+.main-header.collapsed .nav-link:hover,
+.main-header.collapsed .nav-link.active {
+    background: var(--amber-500);
+    color: white;
+}
+
+/* Mobile menu icon for collapsed header */
+.main-header.collapsed .mobile-menu-toggle {
+    display: flex;
+    position: absolute;
+    right: var(--space-6);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.main-header.collapsed .mobile-menu-toggle span {
+    background: var(--amber-600);
+}
+
+/* Hide mobile toggle on desktop when collapsed */
+@media (min-width: 769px) {
+    .main-header.collapsed .mobile-menu-toggle {
+        display: none;
+    }
 }
 
 .header-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: var(--space-4) var(--space-6);
+    padding: var(--space-5) clamp(1rem, 4vw, 3rem);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -112,14 +194,16 @@ body::before {
 
 .logo h1 {
     font-family: var(--font-serif);
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     color: var(--neutral-900);
     margin-bottom: var(--space-1);
+    font-weight: 600;
 }
 
 .logo p {
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: var(--neutral-600);
+    font-weight: 400;
 }
 
 .nav-menu {
@@ -151,6 +235,13 @@ body::before {
     border: none;
     cursor: pointer;
     gap: var(--space-1);
+    padding: var(--space-2);
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+.mobile-menu-toggle:hover {
+    background: rgba(245, 158, 11, 0.1);
 }
 
 .mobile-menu-toggle span {
@@ -159,6 +250,10 @@ body::before {
     background: var(--neutral-600);
     border-radius: 2px;
     transition: var(--transition);
+}
+
+.main-header.collapsed .mobile-menu-toggle span {
+    background: var(--amber-600);
 }
 
 /* ================================
@@ -171,16 +266,51 @@ body::before {
 
 .page {
     display: none;
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
 }
 
 .page.active {
     display: block;
+    animation: pageDropIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.page.exit {
+    animation: pageDropOut 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+}
+
+@keyframes pageDropIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+    60% {
+        opacity: 0.8;
+        transform: translateY(-10px) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes pageDropOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 var(--space-6);
+    padding: 0 clamp(1rem, 4vw, 3rem);
 }
 
 .page-title {
@@ -201,22 +331,22 @@ body::before {
 }
 
 .hero-content {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 var(--space-6);
+    padding: 0 clamp(1rem, 4vw, 3rem);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-16);
+    gap: clamp(2rem, 8vw, 4rem);
     align-items: center;
 }
 
 .hero-badge {
     display: inline-block;
-    padding: var(--space-2) var(--space-4);
+    padding: var(--space-3) var(--space-5);
     background: var(--amber-100);
     color: var(--amber-800);
     border-radius: var(--radius);
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -225,10 +355,11 @@ body::before {
 
 .hero-title {
     font-family: var(--font-serif);
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2rem, 4vw, 2.5rem);
     color: var(--neutral-900);
-    line-height: 1.1;
+    line-height: 1.2;
     margin-bottom: var(--space-6);
+    font-weight: 600;
 }
 
 .hero-description {
@@ -328,14 +459,44 @@ body::before {
 
 .featured-recipes {
     padding: var(--space-20) 0;
+    position: relative;
+}
+
+/* Beige gradient overlay for home page only */
+#home-page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg,
+        rgba(245, 245, 220, 0) 0%,
+        rgba(245, 245, 220, 0.1) 10%,
+        rgba(245, 245, 220, 0.2) 25%,
+        rgba(245, 245, 220, 0.3) 40%,
+        rgba(245, 245, 220, 0.4) 60%,
+        rgba(245, 245, 220, 0.3) 80%,
+        rgba(245, 245, 220, 0.1) 95%,
+        rgba(245, 245, 220, 0) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+#home-page .hero-section,
+#home-page .featured-recipes {
+    position: relative;
+    z-index: 2;
 }
 
 .section-title {
     font-family: var(--font-serif);
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: var(--neutral-900);
     text-align: center;
     margin-bottom: var(--space-12);
+    font-weight: 600;
 }
 
 .recipes-grid {
@@ -345,17 +506,19 @@ body::before {
 }
 
 .recipe-card {
-    background: white;
+    background: #f5f5dc;
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: var(--transition);
     cursor: pointer;
+    border: 1px solid rgba(245, 245, 220, 0.3);
 }
 
 .recipe-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
+    background: #f0f0c8;
 }
 
 .recipe-card img {
@@ -583,11 +746,25 @@ body::before {
     justify-content: center;
     z-index: 2000;
     backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: all 0.3s ease;
 }
 
 .recipe-modal.active,
 .scale-modal.active {
     display: flex;
+    opacity: 1;
+}
+
+.recipe-modal .modal-content,
+.scale-modal .modal-content {
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.recipe-modal.active .modal-content,
+.scale-modal.active .modal-content {
+    transform: scale(1) translateY(0);
 }
 
 .modal-content {
@@ -1089,8 +1266,8 @@ body::before {
    ================================ */
 
 .main-footer {
-    background: var(--neutral-800);
-    color: var(--neutral-200);
+    background: var(--amber-500);
+    color: white;
     margin-top: var(--space-20);
 }
 
@@ -1107,6 +1284,7 @@ body::before {
 .footer-section h4 {
     color: white;
     margin-bottom: var(--space-4);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .footer-section h3 {
@@ -1117,6 +1295,7 @@ body::before {
 .footer-section p {
     margin-bottom: var(--space-4);
     line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .footer-social {
@@ -1130,16 +1309,17 @@ body::before {
     justify-content: center;
     width: 40px;
     height: 40px;
-    background: var(--neutral-700);
-    color: var(--neutral-300);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
     border-radius: 50%;
     text-decoration: none;
     transition: var(--transition);
 }
 
 .footer-social a:hover {
-    background: var(--amber-500);
+    background: rgba(255, 255, 255, 0.3);
     color: white;
+    transform: translateY(-2px);
 }
 
 .footer-section ul {
@@ -1151,13 +1331,20 @@ body::before {
 }
 
 .footer-section ul li a {
-    color: var(--neutral-300);
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     transition: var(--transition);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius);
+    display: inline-block;
+    position: relative;
 }
 
 .footer-section ul li a:hover {
-    color: var(--amber-400);
+    color: #1a1a1a;
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateX(5px);
+    text-shadow: none;
 }
 
 .grocery-links {
@@ -1171,16 +1358,18 @@ body::before {
     align-items: center;
     gap: var(--space-2);
     padding: var(--space-3);
-    background: var(--neutral-700);
+    background: rgba(255, 255, 255, 0.15);
     border-radius: var(--radius);
     text-decoration: none;
-    color: var(--neutral-200);
+    color: white;
     transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .grocery-link:hover {
-    background: var(--neutral-600);
+    background: rgba(255, 255, 255, 0.25);
     color: white;
+    transform: translateY(-2px);
 }
 
 .grocery-link img {
@@ -1193,20 +1382,24 @@ body::before {
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    color: var(--neutral-300);
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     transition: var(--transition);
+    padding: var(--space-2);
+    border-radius: var(--radius);
 }
 
 .github-link:hover {
-    color: var(--amber-400);
+    color: #1a1a1a;
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateX(5px);
 }
 
 .footer-bottom {
-    background: var(--neutral-900);
+    background: rgba(0, 0, 0, 0.1);
     padding: var(--space-6);
     text-align: center;
-    color: var(--neutral-400);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /* ================================
@@ -1259,13 +1452,25 @@ body::before {
     }
 
     .hero-stats {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .logo h1 {
+        font-size: 2rem;
+    }
+
+    .hero-title {
+        font-size: clamp(1.8rem, 4vw, 2.2rem);
+    }
+
+    .section-title {
+        font-size: 1.8rem;
     }
 }
 
 @media (max-width: 768px) {
     .header-container {
-        padding: var(--space-4);
+        padding: var(--space-4) var(--space-4);
     }
 
     .nav-menu {
@@ -1276,6 +1481,16 @@ body::before {
         display: flex;
     }
 
+    .main-header.collapsed .nav-menu {
+        display: none;
+    }
+
+    .main-header.collapsed .mobile-menu-toggle {
+        display: flex;
+        position: static;
+        transform: none;
+    }
+
     .hero-section {
         padding: var(--space-12) 0;
     }
@@ -1284,12 +1499,24 @@ body::before {
         padding: 0 var(--space-4);
     }
 
+    .logo h1 {
+        font-size: 1.5rem;
+    }
+
     .hero-title {
-        font-size: 2.5rem;
+        font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    .section-title {
+        font-size: 1.5rem;
     }
 
     .hero-actions {
         flex-direction: column;
+    }
+
+    .hero-stats {
+        grid-template-columns: 1fr;
     }
 
     .recipes-grid {
