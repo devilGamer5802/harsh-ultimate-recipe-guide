@@ -768,6 +768,11 @@ class RecipeWebsite {
         // Populate ingredients
         this.populateIngredients(recipe.ingredients);
 
+        // Apply current scaling to ingredients if scale is not 1
+        if (this.currentScale !== 1) {
+            this.updateIngredientAmounts(this.currentScale);
+        }
+
         // Populate instructions
         this.populateInstructions(recipe.instructions);
 
@@ -1000,6 +1005,9 @@ class RecipeWebsite {
         // Update hero stats if on home page
         this.updateHeroStats(scale);
 
+        // Update the "View Recipe" button stats in hero section
+        this.updateViewRecipeButton();
+        
         this.closeScaleModal();
     }
 
@@ -1044,6 +1052,39 @@ class RecipeWebsite {
                 servingsEl.textContent = `${scaledMin}-${scaledMax}`;
             } else {
                 const scaledServings = Math.round(parseInt(originalServings) * scale);
+                servingsEl.textContent = scaledServings.toString();
+            }
+        }
+    }
+
+    updateViewRecipeButton() {
+        const recipe = this.recipes[this.currentRecipe || 'chocolate-cake'];
+        if (!recipe) return;
+
+        // Update hero stats with current scale
+        const prepTimeEl = document.getElementById('prepTime');
+        const cookTimeEl = document.getElementById('cookTime');
+        const servingsEl = document.getElementById('servings');
+
+        if (prepTimeEl) {
+            const scaledPrep = Math.round(recipe.prepTime * (this.currentScale > 1 ? 1 + (this.currentScale - 1) * 0.3 : this.currentScale));
+            prepTimeEl.textContent = `${scaledPrep} mins`;
+        }
+
+        if (cookTimeEl) {
+            const scaledCook = Math.round(recipe.cookTime * (this.currentScale > 1 ? 1 + (this.currentScale - 1) * 0.2 : this.currentScale));
+            cookTimeEl.textContent = `${scaledCook} mins`;
+        }
+
+        if (servingsEl) {
+            const originalServings = recipe.servings;
+            if (originalServings.includes('-')) {
+                const [min, max] = originalServings.split('-').map(n => parseInt(n.trim()));
+                const scaledMin = Math.round(min * this.currentScale);
+                const scaledMax = Math.round(max * this.currentScale);
+                servingsEl.textContent = `${scaledMin}-${scaledMax}`;
+            } else {
+                const scaledServings = Math.round(parseInt(originalServings) * this.currentScale);
                 servingsEl.textContent = scaledServings.toString();
             }
         }
