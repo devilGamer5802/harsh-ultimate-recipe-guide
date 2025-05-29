@@ -68,7 +68,7 @@ class RecipeWebsite {
             },
             'pasta-carbonara': {
                 title: 'Classic Pasta Carbonara',
-                image: 'https://unsplash.com/photos/pasta-on-white-ceramic-plate-dvgjof0_TP8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                image: 'https://images.unsplash.com/photo-1608756687911-aa1599ab3bd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
                 category: 'main',
                 dietary: [],
                 prepTime: 10,
