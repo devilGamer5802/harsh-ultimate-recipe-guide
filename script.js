@@ -508,6 +508,7 @@ class RecipeWebsite {
         this.bindEvents();
         this.populateAllRecipes();
         this.showPage('home');
+        this.initScrollEffects();
     }
 
     setGreeting() {
@@ -635,24 +636,72 @@ class RecipeWebsite {
     }
 
     showPage(pageName) {
-        // Hide all pages
-        document.querySelectorAll('.page').forEach(page => {
-            page.classList.remove('active');
-        });
-
-        // Show target page
+        const currentPage = document.querySelector('.page.active');
         const targetPage = document.getElementById(`${pageName}-page`);
-        if (targetPage) {
-            targetPage.classList.add('active');
 
-            // Scroll to top of the page
+        if (!targetPage) return;
+
+        // If there's a current page, animate it out first
+        if (currentPage && currentPage !== targetPage) {
+            currentPage.classList.add('exit');
+
+            // Wait for exit animation, then show new page
             setTimeout(() => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }, 100);
+                currentPage.classList.remove('active', 'exit');
+                this.animateInNewPage(targetPage);
+            }, 400);
+        } else {
+            // No current page, just animate in the new page
+            this.animateInNewPage(targetPage);
         }
+    }
+
+    animateInNewPage(targetPage) {
+        // Force reflow to ensure transition works
+        targetPage.offsetHeight;
+        targetPage.classList.add('active');
+
+        // Scroll to top after animation starts
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }, 200);
+    }
+
+    initScrollEffects() {
+        const header = document.querySelector('.main-header');
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        const updateHeader = () => {
+            const currentScrollY = window.scrollY;
+
+            // Prevent jitter by using threshold
+            const scrollThreshold = 5;
+
+            // Only update if scroll difference is significant
+            if (Math.abs(currentScrollY - lastScrollY) > scrollThreshold) {
+                // Add collapsed class when scrolling down past 100px
+                if (currentScrollY > 100) {
+                    header.classList.add('collapsed');
+                } else if (currentScrollY < 80) {
+                    header.classList.remove('collapsed');
+                }
+
+                lastScrollY = currentScrollY;
+            }
+
+            ticking = false;
+        };
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateHeader);
+                ticking = true;
+            }
+        });
     }
 
     setActiveNavLink(activeLink) {
@@ -1007,7 +1056,7 @@ class RecipeWebsite {
 
         // Update the "View Recipe" button stats in hero section
         this.updateViewRecipeButton();
-        
+
         this.closeScaleModal();
     }
 
